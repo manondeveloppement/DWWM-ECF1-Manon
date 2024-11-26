@@ -1,0 +1,266 @@
+@import url("https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Poppins:wght@100..900&display=swap");
+
+$font-poppins: "Poppins", sans-serif;
+$font-arima: "Arima", sans-serif;
+
+$color-primary: #2e2a39;
+$color-secondary: #fd55b7;
+$color-accent: #83feff;
+$color-background: #e8ffff;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $color-background;
+  font-family: $font-poppins;
+}
+
+// Block: Navbar
+.navbar {
+  display: flex;
+  flex-direction: row; // Align logo, burger, and buttons horizontally
+  justify-content: space-between; // Space out the logo, burger, and buttons
+  align-items: center; // Vertically align the items in the navbar
+  padding: 20px;
+  background-color: $color-accent;
+  position: sticky; // Makes the navbar sticky
+  top: 0; // Sticks to the top of the viewport
+  z-index: 1000; // Ensures it stays above other content
+  width: 100%; // Ensures navbar takes up full width
+
+  &__logo {
+    img {
+      max-height: 70px;
+      width: auto;
+    }
+  }
+
+  &__burger {
+    display: none; // Hide burger menu by default
+    flex-direction: column;
+    cursor: pointer;
+    margin-left: auto; // Aligns the burger menu to the right
+
+    span {
+      background-color: $color-primary;
+      height: 3px;
+      width: 25px;
+      margin: 5px 0;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+
+  &__buttons {
+    display: flex; // Flexbox to align buttons horizontally
+    justify-content: space-between; // Distributes buttons evenly
+    width: 100%; // Ensures the buttons take up the full width of the navbar
+    margin-top: 10px;
+
+    .navbar__button {
+      background-color: $color-secondary;
+      color: $color-primary;
+      border: none;
+      padding: 12px 20px; // Larger padding for buttons
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: $font-arima;
+      transition: background-color 0.3s;
+      display: block;
+      text-decoration: none; // Removes underline from the links
+      margin-bottom: 15px; // Adds space between buttons
+
+      &:hover {
+        background-color: lighten($color-secondary, 10%);
+      }
+    }
+  }
+
+  &__buttons--active {
+    display: flex; // Show buttons when burger is clicked
+    align-items: center; // Center buttons horizontally
+    flex-direction: column; // Stack buttons vertically below burger
+    position: absolute; // Absolute positioning below the burger
+    top: 60px; // Position the buttons below the burger menu
+    right: 20px; // Align to the right of the navbar
+    background-color: $color-accent; // Same background color as navbar
+    padding: 20px; // Padding around the buttons
+    width: 80%; // Set a width for the menu
+    box-shadow: 0 4px 10px $color-primary; // Shadow effect for the dropdown
+  }
+}
+
+// Block: Banner
+.banner {
+  width: 100%;
+  height: 200px; // Mobile-first reduced banner height
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Ensures the image is cropped without distortion
+  }
+}
+
+// Block: Container styling
+.container {
+  display: flex; // Use flexbox to arrange the items horizontally
+  justify-content: space-between; // Space out the left, center, and right elements
+  align-items: center; // Vertically align items to the center
+  width: 95%; // Make sure the container takes the full width
+  margin: 50px;
+  margin-top: 100px;
+  border-radius: 15px;
+  background-color: $color-primary;
+  // Left and right sections take equal space
+  &__left,
+  &__right {
+    flex: 1; // Allow the left and right sections to take equal space
+    display: flex;
+    justify-content: center; // Center the images horizontally
+    align-items: center; // Vertically center the content
+  }
+
+  // Center section with text
+  &__center {
+    flex: 2; // Allow the center section to take more space
+    text-align: center; // Center the text horizontally
+  }
+
+  .container__image {
+    width: 100%; // Make the images responsive
+    height: auto; // Maintain the aspect ratio of the images
+    border-radius: 15px;
+    object-fit: cover;
+  }
+
+  .container__text {
+    font-size: 24px; // Set font size for the text
+    font-weight: bold; // Make the text bold
+    font-family: $font-poppins;
+    color: $color-secondary; // Set text color
+  }
+}
+
+// For screens 320px, 375px, 425px (Mobile devices)
+@media (max-width: 425px) {
+  .navbar {
+    padding: 20px 10px; // Less padding on small screens
+
+    &__buttons {
+      display: none; // Hide buttons by default on small screens
+      flex-direction: column; // Stack buttons vertically
+      width: 100%;
+      margin-top: 10px;
+
+      .navbar__button {
+        margin: 10px 0; // Adds space between buttons
+        padding: 12px 20px;
+      }
+    }
+
+    &__buttons--active {
+      display: flex; // Show buttons when burger is clicked
+      align-items: center; // Center buttons horizontally
+      flex-direction: column; // Stack buttons vertically below burger
+      position: absolute; // Absolute positioning below the burger
+      top: 60px; // Position the buttons below the burger menu
+      right: 10px; // Align to the right of the navbar
+      background-color: $color-accent; // Same background color as navbar
+      padding: 20px; // Padding around the buttons
+      width: 80%; // Set a width for the menu
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); // Shadow effect for the dropdown
+    }
+
+    &__burger {
+      display: flex; // Display burger icon on small screens
+    }
+  }
+
+  .banner {
+    height: 150px; // Adjust the banner height for smaller screens
+  }
+
+  .container {
+    flex-direction: column; // Stack elements vertically on small screens
+    margin: 20px; // Less margin for small screens
+
+    .container__left, .container__right {
+      flex: 1; // Left and right sections will still take equal space
+    }
+
+    .container__text {
+      font-size: 18px; // Adjust text size for smaller screens
+    }
+  }
+}
+
+// For larger screens (768px and above)
+@media (min-width: 768px) {
+  .navbar {
+    padding: 20px 40px; // More padding on larger screens
+    &__burger {
+      display: none; // Hide burger menu on larger screens
+    }
+
+    &__buttons {
+      display: flex; // Display buttons inline
+      justify-content: space-evenly; // Evenly spaces buttons
+      width: 100%;
+      margin-top: 0;
+
+      .navbar__button {
+        margin: 0 10px; // Spacing between buttons
+        padding: 10px 20px;
+      }
+    }
+  }
+
+  .banner {
+    height: 250px; // Larger banner height for tablets/desktops
+  }
+
+  .container {
+    flex-direction: row; // Keep items in row layout for larger screens
+    justify-content: space-between; // Space out sections
+    margin-top: 80px; // Adjust margin to make space for header
+
+    .container__left,
+    .container__right {
+      flex: 1; // Left and right sections maintain equal space
+    }
+
+    .container__center {
+      flex: 2; // Center section takes more space
+    }
+
+    .container__image {
+      max-width: 300px; // Increase image size on larger screens
+    }
+  }
+}
+
+// For even larger screens (1440px and above)
+@media (min-width: 1440px) {
+  .navbar {
+    padding: 20px 60px; // Padding for large screens
+  }
+
+  .banner {
+    height: 350px; // Larger banner height for desktop
+  }
+
+  .container {
+    margin: 50px; // Increase margin for larger screens
+    .container__image {
+      max-width: 400px; // Larger image size for bigger screens
+    }
+  }
+}
