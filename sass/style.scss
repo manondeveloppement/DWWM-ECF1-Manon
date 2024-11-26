@@ -148,7 +148,30 @@ body {
     color: $color-secondary; // Set text color
   }
 }
+.classic-footer {
+  background-color:$color-accent;
+  color: $color-primary;
+  text-align: center;
+  padding: 20px 10px;
 
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__image {
+    max-width: 150px;
+    height: auto;
+  }
+
+  &__text {
+    font-size: 14px;
+    font-family: $font-arima, sans-serif;
+    font-weight: bold;
+  }
+}
 // For screens 320px, 375px, 425px (Mobile devices)
 @media (max-width: 425px) {
   .navbar {
