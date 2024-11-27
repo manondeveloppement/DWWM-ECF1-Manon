@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="image/favicon.png" />
+    <link rel="stylesheet" href="css/style.min.css" />
+    <title>Festival de musique électro</title>
+  </head>
+  <body>
+    <!--Navbar-->
+    <header>
+      <nav class="navbar">
+        <div class="navbar__logo">
+          <img src="image/favicon.png" alt="Logo" />
+        </div>
+        <!--Burger icon-->
+        <div class="navbar__burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="navbar__buttons">
+          <a href="accueil.html" class="navbar__button">Accueil</a>
+          <a href="artiste.html" class="navbar__button">Artistes</a>
+          <a href="services.html" class="navbar__button">Services</a>
+        </div>
+      </nav>
+      <!--Banner-->
+      <div class="banner">
+        <img src="image/banniere.jpg" alt="Bannière" />
+      </div>
+    </header>
+    <div class="festival-container">
+      <!-- Container for date and location -->
+      <div class="festival-dates">
+        <h3 class="festival-dates__title">Dates et Lieu</h3>
+        <p>
+          Le Festival de Musique Électro 2024 se déroule au Port de la
+          Teste-de-Buch, près d'Arcachon, du 15 au 17 juin 2025.
+        </p>
+        <p>
+          Les portes ouvrent à 17h00 et les concerts se poursuivent jusqu’à
+          2h00.
+        </p>
+      </div>
+
+      <!-- Contenair for the program -->
+      <div class="festival-program">
+        <h3 class="festival-program__title">Programme</h3>
+        <button
+          class="festival-program__toggle"
+          onclick="toggleContent('program')"
+        >
+          Voir le programme
+        </button>
+        <div id="program" class="festival-program__content">
+          <p>
+            <strong>15/06/2025</strong><br />19h00 L'Impératrice - 21h30
+            Kavinsky
+          </p>
+          <p><strong>16/06/2025</strong><br />19h00 M83 - 22h00 Wax Taylor</p>
+          <p>
+            <strong>17/06/2025</strong><br />20h30 Bonobo - 22h00 Chinese Man
+          </p>
+        </div>
+      </div>
+
+      <!-- Contenair for catering -->
+      <div class="festival-food">
+        <h3 class="festival-food__title">Restauration</h3>
+        <button class="festival-food__toggle" onclick="toggleContent('food')">
+          Voir les menus
+        </button>
+        <div id="food" class="festival-food__content">
+          <p>
+            Menu Groove (sandwich jambon-emmental + boisson) à 6,50 € en promo
+          </p>
+          <p>Menu Bass (sandwich poulet-roquette + boisson) à 7,50 €</p>
+        </div>
+      </div>
+
+      <!-- Contenair for access-->
+      <div class="festival-access">
+        <h3 class="festival-access__title">Accès</h3>
+        <button
+          class="festival-access__toggle"
+          onclick="toggleContent('access')"
+        >
+          Voir les détails d'accès
+        </button>
+        <div id="access" class="festival-access__content">
+          <img
+            src="image/planportdelateste.png"
+            alt="Access image"
+            class="festival-access__image"
+          />
+          <p>
+            Accédez facilement au site en voiture (parking 10 €/jour) ou en
+            navettes depuis la gare d'Arcachon et de la hume.Vous pouvez venir a
+            pied depuis la gare de la teste. Consignes, toilettes et un
+            dispositif de sécurité renforcé sur place.
+          </p>
+        </div>
+      </div>
+
+      <!-- Contenair for tickets -->
+      <div class="festival-tickets">
+        <h3 class="festival-tickets__title">Billets</h3>
+        <button
+          class="festival-tickets__toggle"
+          onclick="toggleContent('tickets')"
+        >
+          Voir les billets
+        </button>
+        <div id="tickets" class="festival-tickets__content">
+          <p>Pass Journée : 30 €</p>
+          <p>Pass 3 Jours : 80 €</p>
+          <p>Pass VIP : 150 € pour des privilèges exclusifs</p>
+        </div>
+      </div>
+
+      <!--Container for authorized and prohibited objects-->
+      <div class="festival-prohibited-items">
+        <h3 class="festival-prohibited-items__title">
+          Objets autorisés et interdits
+        </h3>
+        <button
+          class="festival-prohibited-items__toggle"
+          onclick="toggleContent('prohibited')"
+        >
+          Voir les objets autorisés et interdits
+        </button>
+        <div id="prohibited" class="festival-prohibited-items__content">
+          <p>
+            <strong>Objets interdits :</strong><br />Bouteilles en verre, objets
+            tranchants, et grands sacs sont interdits sur le site.
+          </p>
+          <p>
+            <strong>Objets autorisés :</strong><br />Petit sac à dos, bouteilles
+            en plastique, appareils photo, etc.
+          </p>
+        </div>
+      </div>
+
+      <!-- Contenair for security -->
+      <div class="festival-security">
+        <h3 class="festival-security__title">Sécurité</h3>
+        <button
+          class="festival-security__toggle"
+          onclick="toggleContent('security')"
+        >
+          Voir les détails de sécurité
+        </button>
+        <div id="security" class="festival-security__content">
+          <p>
+            Un dispositif de sécurité renforcé est en place sur le site pour
+            garantir votre sécurité pendant l'événement.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!--Footer-->
+    <footer class="classic-footer">
+      <div class="classic-footer__content">
+        <img
+          src="image/egaliseur.png"
+          alt="Logo Footer"
+          class="classic-footer__image"
+        />
+        <p class="classic-footer__text">© 2024 Tous droits réservés.</p>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
