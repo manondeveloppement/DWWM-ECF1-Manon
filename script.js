@@ -131,9 +131,14 @@ const renderConcerts = (concerts) => {
     const card = document.createElement("div");
     card.classList.add("card");
 
+    // Add the 'sold-out' class if the concert is sold out
     if (concert.ticketsSold === maxCapacity) {
       card.classList.add("card--sold-out");
     }
+
+    // Determine the background color based on the percentage of tickets sold
+    const progressColor =
+      concert.ticketsSold === maxCapacity ? "#e91e63" : "#0288d1"; // Rose si complet, bleu sinon
 
     card.innerHTML = `
       <div class="card__image">
@@ -150,7 +155,7 @@ const renderConcerts = (concerts) => {
       <p class="date">Date : ${concert.date}</p>
       <p class="horaire">Horaire : ${concert.time}</p>
       <div class="progress-bar">
-        <div class="progress" style="width: ${percentageSold}%">
+        <div class="progress" style="width: ${percentageSold}%; background-color: ${progressColor}">
           <span>${percentageSold}%</span>
         </div>
       </div>
