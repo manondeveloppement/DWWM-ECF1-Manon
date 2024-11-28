@@ -529,6 +529,23 @@ body {
   font-family: $font-arima;
   font-weight: bold;
 }
+.festival-tickets__reserve {
+  background: linear-gradient(75deg, $color-secondary, $color-accent);
+  color: $color-primary;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 20px;
+  font-family: $font-arima;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(45deg, $color-accent, $color-secondary);
+    transform: scale(1.05);
+  }
+}
 
 .festival-program__content,
 .festival-food__content,
