@@ -230,159 +230,226 @@ body {
 // Block : .audio-player
 .audio-player {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  margin: 30px;
-  padding: 20px;
+  gap: 10px;
   background-color: $color-primary;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgb(131, 254, 255, 0.8);
+  border-radius: 8px;
+  padding: 10px;
+  max-width: 300px;
+  margin: 50px auto;
 
   &__audio {
-    width: 80%;
-    max-width: 600px;
-    border-radius: 5px;
-    background-color: $color-primary;
-    padding: 10px;
-    outline: none;
+    display: none; /* Hide native audio player */
+  }
+
+  &__button {
+    padding: 10px 20px;
+    background-color: $color-secondary;
+    color: $color-primary;
+    border: none;
+    border-radius: 4px;
+    font-family: $font-arima;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $color-accent;
+    }
   }
 }
 
 // Block : .equalizer
-.equalizer,
-.reverse-equalizer {
+.equalizer {
   display: flex;
-  align-items: flex-end;
-  gap: 7px;
-  height: 120px;
-  width: 50%;
-  margin: 20px auto;
+  gap: 2px;
   justify-content: center;
+  align-items: flex-end;
+  height: 150px;
+  width: 100%;
+  overflow: hidden;
 
   .bar {
-    width: 16px;
-    background-color: $color-secondary;
-    animation: bounce 1s infinite ease-in-out;
-  }
-
-  // Animation de rebond
-  @keyframes bounce {
-    0%,
-    100% {
-      height: 20%;
-    }
-    50% {
-      height: 100%;
-    }
-  }
-}
-
-// Reverse Equalizer - pour la section inversée
-.reverse-equalizer {
-  .bar {
+    width: 8px;
+    height: 50px;
     background-color: $color-accent;
-    align-items: flex-start;
+    transition: height 0.1s linear;
+
+    &:nth-child(even) {
+      background-color: $color-secondary;
+    }
   }
 }
 
-/* Style for the card container */
-.cards-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
-  gap: 20px;
-  padding: 20px;
-  justify-items: center;
-}
-
-/* Style for each card */
-.card {
-  width: 100%;
-  max-width: 300px;
+// Filters
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem;
   background-color: $color-primary;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgb(131, 254, 255, 3.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
+  box-shadow: 0 2px 4px rgb(131, 254, 255, 0.8);
 
-  &:hover {
-    transform: translateY(
-      -10px
-    ); /* Légère élévation de la carte pour l'effet de profondeur */
-    box-shadow: 0 8px 20px rgb(253, 85, 183, 3.5); /* Ombre plus marquée lors du survol */
+  &__group {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__button {
+    font-family: $font-arima;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    background-color: $color-secondary;
+    color: $color-primary;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+
+    &:hover {
+      background-color: $color-accent;
+    }
+  }
+
+  &__reset {
+    font-family: $font-arima;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    background-color: $color-accent;
+    color: $color-primary;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+
+    &:hover {
+      background-color: $color-secondary;
+    }
   }
 }
 
-/* Style for the image of the card */
-.card__image {
-  width: 100%;
-  height: 350px;
-  object-fit: cover;
-  border-radius: 8px 8px 0 0;
-}
+// Concert section
+.concerts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
 
-/* Card content */
-.card__content {
-  padding: 15px;
-}
+  .card {
+    background-color: $color-primary;
+    border: none;
+    border-radius: 8px;
+    width: calc(33.33% - 20px);
+    // 3 cards per line with a gap of 20px
+    padding: 20px;
+    box-shadow: 0 4px 6px rgb(131, 254, 255, 0.8);
 
-/* Title of the card */
-.card__title {
-  font-family: $font-arima;
-  color: $color-secondary;
-  margin-bottom: 10px;
-  font-weight: bold;
-  text-align: center;
-}
+    @media (max-width: 768px) {
+      width: calc(50% - 20px); // 2 cards per line on tablet
+    }
 
-/* Description of the card */
-.card__description {
-  font-family: $font-poppins;
-  font-weight: bold;
-  color: $color-secondary;
-  margin-bottom: 10px;
-  text-align: center;
-}
+    @media (max-width: 480px) {
+      width: 100%; // 1 card per line on mobile
+    }
 
-/* Price, date, and time */
-.card__price,
-.card__date,
-.card__time {
-  font-family: $font-arima;
-  color: $color-accent;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 5px;
-}
+    h3 {
+      margin: 0 0 10px;
+      color: $color-secondary;
+      font-family: $font-poppins;
+      font-weight: bold;
+      text-align: center;
+    }
 
-/* Button of the card */
-.card__btn {
-  background-color: $color-secondary;
-  color: $color-primary;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 100%;
-  text-align: center;
-  transition: all 0.3s ease; /* Smooth transition effect for the button */
-  font-family: $font-arima;
-  font-weight: bold;
-}
+    p {
+      margin: 5px 0;
+      color: $color-secondary;
+      font-family: $font-poppins;
+      font-weight: bold;
+      text-align: center;
+    }
 
-/* Button hover effect */
-.card__btn:hover {
-  background-color: $color-accent;
-}
+    .price {
+      font-family: $font-arima;
+      font-weight: bold;
+      color: $color-accent;
+    }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .cards-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
-  }
-}
+    .horaire {
+      font-family: $font-poppins;
+      font-style: bold;
+    }
 
-@media (max-width: 480px) {
-  .cards-container {
-    grid-template-columns: 1fr; /* 1 card per row */
+    .progress-bar {
+      width: 100%;
+      margin: 1.5rem 0;
+      background-color: $color-background;
+      border-radius: 6px;
+      height: 24px;
+
+      .progress {
+        width: 0;
+        border-radius: 6px;
+        height: 24px;
+        text-align: right;
+        position: relative;
+        background-color: $color-secondary;
+
+        span {
+          font-family: $font-arima;
+          font-weight: bold;
+          font-size: 14px;
+          line-height: 24px;
+          display: inline-block;
+          position: absolute;
+          top: 0px;
+          right: 10px;
+          color: $color-primary;
+        }
+        // Blue for available concerts
+        &.available {
+          background-color: $color-accent;
+        }
+
+        // Pink for sold-out concerts
+        &.sold-out {
+          background-color: $color-secondary;
+        }
+      }
+    }
+
+    &__image {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
+      border-radius: 50%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .card__badge {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background-color: rgb(131, 254, 255, 0.5);
+        color: $color-primary;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 12px;
+        font-weight: bold;
+        font-family: $font-arima;
+        text-transform: uppercase;
+      }
+    }
   }
 }
 
